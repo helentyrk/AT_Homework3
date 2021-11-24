@@ -19,6 +19,7 @@ const routes = [
     component: () =>
       import("../views/Contact.vue"),
   },
+ 
 ];
 
 const router = createRouter({

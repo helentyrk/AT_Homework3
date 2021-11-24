@@ -1,7 +1,9 @@
 <template>
     <footer>
         <p>Copyright &copy; 2021</p>
-        <router-link to="/contact">Contact us</router-link>
+        <router-link to="/contact">Contact us</router-link> <br>
+        
+        <router-link to="/">Home</router-link>
     </footer>
 </template>
 
