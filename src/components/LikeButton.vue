@@ -1,5 +1,6 @@
 <template>
     <button class="btn" v-on:click="IncreaseLikes"> Like </button>  <!--button for likes, on click the number of clicks gets counted-->
+
 </template>
 
 <script>
@@ -12,9 +13,7 @@ export default {
     },
     methods:{
         IncreaseLikes: function(){
-            this.$store.state.postsList.forEach(post=>{
-                post.likes +=1;
-            });
+            this.$store.dispatch("IncreaseLikesAct")
         }
     },
 }

@@ -6,10 +6,10 @@
         <span class="user"> {{ post.user}} </span> <br> <!-- user's name -->
         
         <img class="post-img" v-bind:src=post.img > <br> <!-- post image -->
-        <span class="text"> {{ post.text }} </span> <br>
-        <span class="date_time"> Posted on {{ post.date_time }} </span> <br>
-        <span class="likes"> Number of likes is: {{ post.likes }} </span> <br>
+        <span class="text"> {{ post.text }} </span> <br> <!-- post text -->
+        <span class="date_time"> Posted on {{ post.date_time }} </span> <br> <!-- the time when it was posted -->
         <LikeButton />
+        <span class="likes"> {{ post.likes }} likes </span><!-- how many likes -->
     </p>
     </div> 
     
@@ -18,14 +18,12 @@
 <script>
 import LikeButton from './LikeButton.vue'
 
-
-/* import LikeButton from "./LikeButton"
- */
 export default {
   components: { LikeButton },
     name: "post_component",
     data: function(){
         return{
+            
         }
     },
     
@@ -34,9 +32,9 @@ export default {
         postsList(){
             return this.$store.state.postsList //reach out to the store to get the data; refers to the posts array in the state of the store
         },
-        numberOfLikes(){
-            return this.$state.getters.numberOfLikes;
-        }
+        /* numberOfLikes(){
+            return this.$state.getters.numberOfLikes
+        } */
     }
 }
 </script>

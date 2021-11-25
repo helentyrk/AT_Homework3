@@ -102,9 +102,15 @@ export default createStore({
            post.likes = 0; /* resets the number of likes to 0 */
         })
      },
+     IncreaseLikes: state => {
+        state.postsList.forEach(post =>{
+           post.likes += 1;
+        })
+     },
+     
      
   },
-  getters: {
+  /* getters: {
    numberOfLikes: state =>{
       var numberOfLikes=state.postsList.map(post =>{
          return{
@@ -113,13 +119,25 @@ export default createStore({
             date_time: post.date_time,
             user: post.user,
             text: post.text,
-            likes: post.likes
+            likes: post.likes=0
          }
 
       });
       return numberOfLikes
    }
+  }, */
+  
+  actions: {
+     likesResetAct: act => {
+        setTimeout(function(){
+           act.commit("likesReset")
+        }, 1000)
+     },
+     IncreaseLikesAct: act => {
+      setTimeout(function(){
+         act.commit("IncreaseLikes")
+      }, 1000)
+   }
   },
-  actions: {},
   modules: {},
 });
