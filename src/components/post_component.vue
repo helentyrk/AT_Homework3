@@ -8,7 +8,9 @@
         <img class="post-img" v-bind:src=post.img > <br> <!-- post image -->
         <span class="text"> {{ post.text }} </span> <br> <!-- post text -->
         <span class="date_time"> Posted on {{ post.date_time }} </span> <br> <!-- the time when it was posted -->
-        <LikeButton />
+
+        <button class="btn" v-on:click="IncreaseLikes"> Like </button> <!-- like button -->
+       
         <span class="likes"> {{ post.likes }} likes </span><!-- how many likes -->
     </p>
     </div> 
@@ -16,14 +18,18 @@
 </template>
 
 <script>
-import LikeButton from './LikeButton.vue'
 
 export default {
-  components: { LikeButton },
+  components: { },
     name: "post_component",
     data: function(){
         return{
             
+        }
+    },
+    methods:{
+        IncreaseLikes: function(){
+            this.$store.dispatch("IncreaseLikesAct")
         }
     },
     
