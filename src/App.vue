@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <router-view /> <!-- all the routs injected here -->
+    <router-view /> <!-- all the routess injected here -->
   </div>
       <hr>
      <Footer />

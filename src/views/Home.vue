@@ -1,7 +1,7 @@
 <template>
   <div class = "home">
-    <post_component ></post_component>
-    <button @click="reset">Reset number of likes</button>
+    <post_component > </post_component>
+    <button class="btn" v-on:click="likesReset">Reset number of likes</button> <!-- access store for initial data?-->
 </div>
 </template>
 
@@ -13,12 +13,11 @@ export default {
   components: {
     post_component //register the post component
   },
-
-  data(){
-    return{
-    
-    }
-  },
-      
+  
+methods: {
+  likesReset: function(){
+    this.$store.commit("likesReset")
+}     
+}
 }
 </script>

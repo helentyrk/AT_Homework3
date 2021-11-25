@@ -1,14 +1,20 @@
 <template>
-    <button class = 'btn' @click="count++">Like </button> <!--button for likes, on click the number of clicks gets counted-->
-    <p> {{count}} like(s) </p> 
+    <button class="btn" v-on:click="IncreaseLikes"> Like </button>  <!--button for likes, on click the number of clicks gets counted-->
 </template>
 
 <script>
 export default {
     name: 'LikeButton',
-    data: function(){ //data passed as a function (since it is a basic component), counts clicks
+    data: function(){ 
         return {
-            count: 0
+            
+        }
+    },
+    methods:{
+        IncreaseLikes: function(){
+            this.$store.state.postsList.forEach(post=>{
+                post.likes +=1;
+            });
         }
     },
 }

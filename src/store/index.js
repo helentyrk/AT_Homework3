@@ -10,7 +10,8 @@ export default createStore({
            "avatar": "https://i.imgur.com/C46EtWD.jpg",
            "date_time":new Date().toISOString().substr(0,16),
            "user":"Gordon",
-           "text":"I think it's going to rain."
+           "text":"I think it's going to rain.",
+           "likes": 0
         },
         {
            "id":2,
@@ -18,7 +19,8 @@ export default createStore({
            "avatar": "https://i.imgur.com/UgzQ73P.png",
            "date_time":new Date().toISOString().substr(0,16),
            "user":"Lucas",
-           "text":"Which weighs more, a pound of feathers or a pound of bricks?"
+           "text":"Which weighs more, a pound of feathers or a pound of bricks?",
+           "likes": 0
         },
         {
            "id":3,
@@ -26,7 +28,8 @@ export default createStore({
            "avatar": "https://i.imgur.com/wa3hoMs.jpg",
            "date_time":new Date().toISOString().substr(0,16),
            "user":"Robert",
-           "text":"Felt cute, might delete later."
+           "text":"Felt cute, might delete later.",
+           "likes": 0
         },
             {
            "id":4,
@@ -34,7 +37,8 @@ export default createStore({
            "avatar": "https://i.imgur.com/AAu3udk.jpg",
            "date_time":new Date().toISOString().substr(0,16),
            "user":"Alex",
-           "text":"Random picture"
+           "text":"Random picture",
+           "likes": 0
         },
         {
            "id":5,
@@ -42,7 +46,8 @@ export default createStore({
            "avatar": "https://i.imgur.com/AAu3udk.jpg",
            "date_time":new Date().toISOString().substr(0,16),
            "user":"Martin",
-           "text":"Join my Discord channel"
+           "text":"Join my Discord channel",
+           "likes": 0
         },
         {
            "id":6,
@@ -50,7 +55,8 @@ export default createStore({
            "avatar": "https://i.imgur.com/Nz5v2o7.png",
            "date_time":new Date().toISOString().substr(0,16),
            "user":"Steve",
-           "text":"How to chop a tree in Minecraft???."
+           "text":"How to chop a tree in Minecraft???.",
+           "likes": 0
         },
             {
            "id":7,
@@ -58,7 +64,8 @@ export default createStore({
            "avatar": "https://i.imgur.com/uxZ3HVv.jpg",
            "date_time":new Date().toISOString().substr(0,16),
            "user":"Gustavo",
-           "text":"The finest ingredients are brought together with love and care, then slow cooked to perfection. Yes, the old ways are still best at Los Pollos Hermanos. But don't take my word for it. One taste, and you'll know."
+           "text":"The finest ingredients are brought together with love and care, then slow cooked to perfection. Yes, the old ways are still best at Los Pollos Hermanos. But don't take my word for it. One taste, and you'll know.",
+           "likes": 0
         },
         {
            "id":8,
@@ -66,7 +73,8 @@ export default createStore({
            "avatar": "https://i.imgur.com/AAu3udk.jpg",
            "date_time":new Date().toISOString().substr(0,16),
            "user":"Eric",
-           "text":"Happy Birthday, Mark!!!"
+           "text":"Happy Birthday, Mark!!!",
+           "likes": 0
         },
         {
            "id":9,
@@ -74,7 +82,8 @@ export default createStore({
            "avatar": "https://i.imgur.com/KXkaipL.jpg",
            "date_time":new Date().toISOString().substr(0,16),
            "user":"Sandra",
-           "text":"I hate dairy products."
+           "text":"I hate dairy products.",
+           "likes": 0
         },
         {
            "id":10,
@@ -82,11 +91,35 @@ export default createStore({
            "avatar": "https://i.imgur.com/MFK0x1X.png",
            "date_time":new Date(),
            "user":"Edgar",
-           "text":"It's Wednesday my dudes."
+           "text":"It's Wednesday my dudes.",
+           "likes": 0
         }
      ]
   },
-  mutations: {},
+  mutations: {
+     likesReset: state=>{
+        state.postsList.forEach(post => {
+           post.likes = 0; /* resets the number of likes to 0 */
+        })
+     },
+     
+  },
+  getters: {
+   numberOfLikes: state =>{
+      var numberOfLikes=state.postsList.map(post =>{
+         return{
+            img: post.img,
+            avatar: post.avatar,
+            date_time: post.date_time,
+            user: post.user,
+            text: post.text,
+            likes: post.likes
+         }
+
+      });
+      return numberOfLikes
+   }
+  },
   actions: {},
   modules: {},
 });

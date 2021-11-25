@@ -8,34 +8,34 @@
         <img class="post-img" v-bind:src=post.img > <br> <!-- post image -->
         <span class="text"> {{ post.text }} </span> <br>
         <span class="date_time"> Posted on {{ post.date_time }} </span> <br>
-        
-        <LikeButton /> <!-- Like button as a compoent -->
-        </p>
-    </div>
+        <span class="likes"> Number of likes is: {{ post.likes }} </span> <br>
+        <LikeButton />
+    </p>
+    </div> 
+    
 </template>
+
 <script>
+import LikeButton from './LikeButton.vue'
 
 
-import LikeButton from "./LikeButton"
-
+/* import LikeButton from "./LikeButton"
+ */
 export default {
+  components: { LikeButton },
     name: "post_component",
-
     data: function(){
         return{
         }
     },
-/*     filters:{
-        tobold: function(value){
-            return value.bold();
-        }
-    }, */
-    components: {
-        LikeButton // "Like" button as a component for each post
-    },
+    
+
     computed: {
         postsList(){
             return this.$store.state.postsList //reach out to the store to get the data; refers to the posts array in the state of the store
+        },
+        numberOfLikes(){
+            return this.$state.getters.numberOfLikes;
         }
     }
 }
@@ -70,6 +70,14 @@ vertical-align: middle; /* user name in the middle of the pic*/
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+  .btn {
+        padding: 3 px;
+        border: 1px solid;
+        background: rgb(216, 211, 211);
+        color: blue;
+        border-radius: 20px;
 }
 
 </style>
